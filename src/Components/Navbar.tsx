@@ -62,7 +62,7 @@ export const Navbar = () => {
                                 About
                             </NavLink>
                             <NavLink
-                                to={'/products'}
+                                to={'/product'}
                                 className="hover:text-[#38bdf8] border-b focus:text-[#38bdf8] border-gray-500 cursor-pointer text-gray-500 text-md p-4"
                             >
                                 Product
