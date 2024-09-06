@@ -60,11 +60,11 @@ export const Whyme = () => {
                     </div>
                 </div>
             </div>
-            <div className="bg-gray-200 text-center h-20 bottom-0">
+            <footer className="bg-gray-200 text-center h-20 bottom-0">
                 <p className="p-6">
                     Copyright © 2023 itstore. Powered by itstore.
                 </p>
-            </div>
+            </footer>
         </>
     )
 }

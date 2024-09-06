@@ -13,8 +13,8 @@ export const Navbar = () => {
         setIsClicked(!isClick)
     }
     return (
-        <div className="sticky h-full z-30 p-3 shadow-sm  shadow-gray-500">
-            <div className="md:hidden relative flex items-center justify-between ">
+        <nav className="sticky h-full z-30 p-3 shadow-sm  shadow-gray-500">
+            <aside className="md:hidden relative flex items-center justify-between ">
                 <h1 className="italic uppercase text-gray-700 text-6xl ">
                     its
                 </h1>
@@ -88,8 +88,8 @@ export const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div className="md:flex hidden items-center justify-between ">
+            </aside>
+            <aside className="md:flex hidden items-center justify-between ">
                 <h1 className=" italic uppercase text-gray-700 text-8xl ">
                     its
                 </h1>
@@ -134,7 +134,7 @@ export const Navbar = () => {
                         </NavLink>
                     </ul>
                 </nav>
-            </div>
-        </div>
+            </aside>
+        </nav>
     )
 }

@@ -7,13 +7,13 @@ import { Whyme } from '../Components/Whyme'
 
 export const Home = () => {
     return (
-        <div className="overflow-hidden overflow-x-hidden">
+        <main className="overflow-hidden overflow-x-hidden">
             <Slider />
             <FeatureProduct />
             <Consultation />
             <BestSelling />
             <Offers />
             <Whyme />
-        </div>
+        </main>
     )
 }

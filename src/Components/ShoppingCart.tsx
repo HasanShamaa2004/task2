@@ -25,7 +25,7 @@ export const ShoppingCart = () => {
             </div>
         )
     return (
-        <>
+        <main>
             <section className="py-4 mx-auto w-full">
                 <div className="flex justify-center items-center">
                     <div className="flex flex-col w-full">
@@ -49,7 +49,7 @@ export const ShoppingCart = () => {
             <div className=" ms-auto text-xl font-bold">
                 Total Price: <span className="text-red-500">${+cartTotal}</span>{' '}
             </div>
-            <div className="flex justify-center items-center">
+            <section className="flex justify-center items-center">
                 <button
                     className="m-2  text-red-500 md:text-2xl text-xl hover:text-red-600 "
                     onClick={() => emptyCart()}
@@ -62,7 +62,7 @@ export const ShoppingCart = () => {
                 >
                     &larr; Go To Home
                 </Link>
-            </div>
-        </>
+            </section>
+        </main>
     )
 }

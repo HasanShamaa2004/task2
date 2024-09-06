@@ -5,7 +5,7 @@ export const Booking = () => {
     const [sub, setSub] = useState('')
     const [date, setDate] = useState('')
     const [tnx, setTnx] = useState('')
-    const [formData, setFormData]: any = useState('') //form data are saved here
+    const [_, setFormData]: any = useState('') //form data are saved here
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -13,8 +13,8 @@ export const Booking = () => {
         setFormData(<p>{sub + ' ' + date}</p>)
     }
     return (
-        <>
-            <div className="bg-white shadow-sm shadow-gray-200">
+        <main>
+            <section className="bg-white shadow-sm shadow-gray-200">
                 <div className="h-[30rem] w-full">
                     <div
                         style={{
@@ -66,7 +66,7 @@ export const Booking = () => {
                         Copyright © 2023 itstore. Powered by itstore.
                     </p>
                 </div>
-            </div>
-        </>
+            </section>
+        </main>
     )
 }

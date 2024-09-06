@@ -3,8 +3,8 @@ import { Whyme } from '../Components/Whyme'
 
 export const About = () => {
     return (
-        <div>
-            <div className="h-[30rem] w-full">
+        <main>
+            <section className="h-[30rem] w-full">
                 <div
                     style={{
                         backgroundImage:
@@ -16,8 +16,8 @@ export const About = () => {
                         About Us
                     </div>
                 </div>
-            </div>
-            <div className="grid md:grid-cols-2 grid-cols-1 h-[450px] w-full lg:px-20 lg:py-20 md:px-15 md:py-15 px-8 py-8 bg-gray-100">
+            </section>
+            <section className="grid md:grid-cols-2 grid-cols-1 h-[450px] w-full lg:px-20 lg:py-20 md:px-15 md:py-15 px-8 py-8 bg-gray-100">
                 <div className="flex flex-col justify-center items-center mx-auto">
                     <h1 className="text-gray-700 md:text-4xl lg:text-6xl text-2xl relative self-start py-2 font-semibold">
                         Who we are?
@@ -38,9 +38,9 @@ export const About = () => {
                         alt="team img"
                     />
                 </div>
-            </div>
+            </section>
             <OurTeam />
             <Whyme />
-        </div>
+        </main>
     )
 }
