@@ -34,7 +34,7 @@ export const About = () => {
                 <div className="flex items-center justify-center">
                     <img
                         className="bg-contain bg-no-repeat mr-2 max-w-[80%] md:mx-auto mx-0 md:my-0 py-2"
-                        src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                        src="/photo.webp"
                         alt="team img"
                     />
                 </div>
