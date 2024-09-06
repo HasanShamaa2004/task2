@@ -7,7 +7,7 @@ export const Booking = () => {
     const [tnx, setTnx] = useState('')
     const [_, setFormData]: any = useState('') //form data are saved here
 
-    function handleSubmit(e) {
+    function handleSubmit(e: { preventDefault: () => void }) {
         e.preventDefault()
         setTnx('Thanks for booking!')
         setFormData(<p>{sub + ' ' + date}</p>)
