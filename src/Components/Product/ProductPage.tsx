@@ -8,9 +8,11 @@ export const ProductPage = () => {
     const [filteredProducts, setFilteredProducts] = useState([])
     const [allCategories, setAllCategories] = useState<string[]>([])
     const [filterCategory, setFilterCategory] = useState<string>('')
+    const [activeCategory, setActiveCategory] = useState<string>('')
 
     function handelSetCategory(category: string = '') {
         setFilterCategory(category)
+        setActiveCategory(category)
     }
 
     useEffect(() => {
@@ -19,10 +21,10 @@ export const ProductPage = () => {
             setProducts(array.data)
             setFilteredProducts(array.data)
             const allProductCategories: Set<string> = new Set()
-            array.data.map((product) => {
+            array.data.forEach((product) => {
                 allProductCategories.add(product.category)
-                setAllCategories(Array.from(allProductCategories))
             })
+            setAllCategories(Array.from(allProductCategories))
         }
         getData()
     }, [])
@@ -41,38 +43,44 @@ export const ProductPage = () => {
     return (
         <>
             <div className="flex flex-col min-h-screen">
-                <div className="flex flex-1">
-                    <aside className="w-[20%] bg-gray-100 p-4 fixed top-[254px] bottom-20 mb-6 overflow-y-auto">
-                        <p
-                            className="cursor-pointer font-semibold p-2 hover:text-sky-500"
-                            onClick={() => handelSetCategory('')}
-                        >
-                            allCategories <span>({products.length})</span>
-                        </p>
-                        {allCategories.map((category, i) => (
-                            <p
-                                key={i}
-                                className="cursor-pointer font-semibold p-2 hover:text-sky-500"
-                                onClick={() => handelSetCategory(category)}
+                <div className="flex flex-1 flex-col">
+                    <h1 className="text-3xl py-10 text-center">All Products</h1>
+                    <div className="sticky top-0 bg-white z-50 py-4 shadow-md">
+                        <div className="flex justify-center flex-wrap gap-2 px-4">
+                            <button
+                                className={`px-3 py-2 rounded-md text-sm ${
+                                    activeCategory === ''
+                                        ? 'bg-sky-500 text-white'
+                                        : 'bg-gray-200 text-gray-700 hover:bg-sky-500 hover:text-white'
+                                }`}
+                                onClick={() => handelSetCategory('')}
                             >
-                                {category}
-                            </p>
-                        ))}
-                    </aside>
-                    <main className="flex-1 ml-[20%] flex flex-col">
-                        <h1 className="text-3xl py-10 text-center">
-                            All Products
-                        </h1>
-                        <div className="flex-1 overflow-y-auto p-4">
-                            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-                                {filteredProducts.map((product, index) => (
-                                    <Card item={product} key={index} />
-                                ))}
-                            </div>
+                                All Categories <span>({products.length})</span>
+                            </button>
+                            {allCategories.map((category, i) => (
+                                <button
+                                    key={i}
+                                    className={`px-3 py-2 rounded-md text-sm ${
+                                        activeCategory === category
+                                            ? 'bg-sky-500 text-white'
+                                            : 'bg-gray-200 text-gray-700 hover:bg-sky-500 hover:text-white'
+                                    }`}
+                                    onClick={() => handelSetCategory(category)}
+                                >
+                                    {category}
+                                </button>
+                            ))}
                         </div>
-                    </main>
-                </div>
+                    </div>
 
+                    <div className="flex-1 overflow-y-auto p-4">
+                        <div className="flex flex-wrap justify-center items-center gap-5">
+                            {filteredProducts.map((product, index) => (
+                                <Card item={product} key={index} />
+                            ))}
+                        </div>
+                    </div>
+                </div>
                 <footer className="bg-gray-200 text-center h-20 mt-4 w-full">
                     <p className="p-6">
                         Copyright © 2023 itstore. Powered by itstore.
