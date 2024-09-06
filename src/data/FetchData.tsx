@@ -17,7 +17,7 @@ export const FetchData = () => {
     useEffect(() => {
         try {
             async function getData() {
-                const res = await axios.get('http://localhost:5173/data.json')
+                const res = await axios.get('/data.json')
                 if (res.status === 200) setGetData(res.data)
             }
             getData()

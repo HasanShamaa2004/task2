@@ -15,9 +15,7 @@ export const ProductPage = () => {
 
     useEffect(() => {
         async function getData() {
-            const array = await axios.get<IProduct[]>(
-                'http://localhost:5173/data.json'
-            )
+            const array = await axios.get<IProduct[]>('/data.json')
             setProducts(array.data)
             setFilteredProducts(array.data)
             const allProductCategories: Set<string> = new Set()
