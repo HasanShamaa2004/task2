@@ -39,54 +39,92 @@ export const ProductPage = () => {
             setFilteredProducts(filtered)
         }
     }, [filterCategory])
+    const [isVisible, setIsVisible] = useState(false)
 
+    const toggleVisibility = () => {
+        if (window.pageYOffset > window.innerHeight / 2) {
+            setIsVisible(true)
+        } else {
+            setIsVisible(false)
+        }
+    }
+
+    // Scroll to top function
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        })
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', toggleVisibility)
+        return () => {
+            window.removeEventListener('scroll', toggleVisibility)
+        }
+    }, [])
     return (
         <>
-            <div className="flex flex-col min-h-screen">
-                <div className="flex flex-1 flex-col">
-                    <h1 className="text-3xl py-10 text-center">All Products</h1>
-                    <div className="sticky top-0 bg-white z-50 py-4 shadow-md">
-                        <div className="flex justify-center flex-wrap gap-2 px-4">
+            <main className="flex flex-col min-h-screen">
+                <h1 className="text-3xl py-10 text-center">All Products</h1>
+                <section className="sticky top-0 bg-white z-30 py-4 shadow-md">
+                    <div className="flex justify-center flex-wrap gap-2 px-4">
+                        <button
+                            className={`px-3 py-2 rounded-md text-sm ${
+                                activeCategory === ''
+                                    ? 'bg-sky-500 text-white'
+                                    : 'bg-gray-200 text-gray-700 hover:bg-sky-500 hover:text-white'
+                            }`}
+                            onClick={() => handelSetCategory('')}
+                        >
+                            All Categories <span>({products.length})</span>
+                        </button>
+                        {allCategories.map((category, i) => (
                             <button
+                                key={i}
                                 className={`px-3 py-2 rounded-md text-sm ${
-                                    activeCategory === ''
+                                    activeCategory === category
                                         ? 'bg-sky-500 text-white'
                                         : 'bg-gray-200 text-gray-700 hover:bg-sky-500 hover:text-white'
                                 }`}
-                                onClick={() => handelSetCategory('')}
+                                onClick={() => handelSetCategory(category)}
                             >
-                                All Categories <span>({products.length})</span>
+                                {category}
                             </button>
-                            {allCategories.map((category, i) => (
-                                <button
-                                    key={i}
-                                    className={`px-3 py-2 rounded-md text-sm ${
-                                        activeCategory === category
-                                            ? 'bg-sky-500 text-white'
-                                            : 'bg-gray-200 text-gray-700 hover:bg-sky-500 hover:text-white'
-                                    }`}
-                                    onClick={() => handelSetCategory(category)}
-                                >
-                                    {category}
-                                </button>
-                            ))}
-                        </div>
+                        ))}
                     </div>
-
-                    <div className="flex-1 overflow-y-auto p-4">
-                        <div className="flex flex-wrap justify-center items-center gap-5">
-                            {filteredProducts.map((product, index) => (
-                                <Card item={product} key={index} />
-                            ))}
-                        </div>
+                </section>
+                <section className="flex-1 overflow-y-auto p-4">
+                    <div className="flex flex-wrap justify-center items-center gap-5">
+                        {filteredProducts.map((product, index) => (
+                            <Card item={product} key={index} />
+                        ))}
                     </div>
-                </div>
-                <footer className="bg-gray-200 text-center h-20 mt-4 w-full">
-                    <p className="p-6">
-                        Copyright © 2023 itstore. Powered by itstore.
-                    </p>
-                </footer>
-            </div>
+                </section>
+            </main>
+            <footer className="bg-gray-200 text-center h-20 mt-4 w-full">
+                <p className="p-6">
+                    Copyright © 2023 itstore. Powered by itstore.
+                </p>
+            </footer>
+            {isVisible && (
+                <button
+                    onClick={scrollToTop}
+                    style={{
+                        position: 'fixed',
+                        bottom: '50px',
+                        right: '30px',
+                        padding: '10px',
+                        backgroundColor: '#0ea5e9',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                    }}
+                >
+                    ↑ إلى الأعلى
+                </button>
+            )}
         </>
     )
 }

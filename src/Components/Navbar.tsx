@@ -12,8 +12,9 @@ export const Navbar = () => {
     function handelClick() {
         setIsClicked(!isClick)
     }
+
     return (
-        <nav className="sticky h-full z-30 p-3 shadow-sm  shadow-gray-500">
+        <nav className="sticky h-full z-50 p-3 shadow-sm  shadow-gray-500">
             <aside className="md:hidden relative flex items-center justify-between ">
                 <h1 className="italic uppercase text-gray-700 text-6xl ">
                     its
